@@ -1,0 +1,32 @@
+apply plugin: 'idea'
+apply plugin: 'java'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+version = '1.0'
+
+repositories {
+    mavenCentral()
+    maven {
+        url "http://dl.bintray.com/epam/reportportal"
+    }
+}
+
+dependencies {
+    compile 'org.testng:testng:7.1.0'
+    compile 'com.epam.reportportal:agent-java-testng:5.0.0-BETA-9'
+    compile 'com.epam.reportportal:logger-java-log4j:5.0.0-BETA-9'
+    compile 'org.slf4j:slf4j-log4j12:1.7.30'
+}
+
+task run(type: Test) {
+    def weaver = configurations.compile.find { it.name.contains("aspectjweaver") }
+    jvmArgs = jvmArgs << "-javaagent:$weaver"
+
+    testLogging.showStandardStreams = true
+    useTestNG() {
+        listeners << 'com.Listener'
+    }
+
+    //debug=true
+}
