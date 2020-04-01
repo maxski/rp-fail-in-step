@@ -26,6 +26,7 @@ public class Listener extends ReportPortalTestNGListener {
 
         LOGGER.info("Attach for test: " + result.getMethod().getMethodName());
         LOGGER.info("RP_MESSAGE#BASE64#{}#{}", BaseEncoding.base64().encode(bytes), "Attach on Fail");
+
         super.onTestFailure(result);
     }
 }
