@@ -27,6 +27,4 @@ task run(type: Test) {
     useTestNG() {
         listeners << 'com.Listener'
     }
-
-    //debug=true
 }
