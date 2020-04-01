@@ -1,7 +1,1 @@
-# demo
-
-./gradlew clean correctRetry запускает тест без слушателя рп
-
-./gradlew clean incorrectRetry запускает тест со слушателем рп
-
-Обращайте внимание на количество выполненых тестов.
+Reproduce incorrect behavior of RP5.0-beta-9 for attaches in steps using listener
